@@ -1,77 +1,75 @@
 window.addEventListener('load',function () {
 
     login = document.getElementById('loginbtn');
-    username = document.getElementById('username')
-    pass = document.getElementById('pass')
+    username = document.getElementById('user_name')
+    the_pass = document.getElementById('password')
     
-    usernameerror = document.getElementById('usernameerror')
-    passerror = document.getElementById('userpasserror')
-    
+    usernameerror = document.getElementById('user_name_error')
+    passerror = document.getElementById('password_error')
     
     login.addEventListener('click',async function(e) {
     
         e.preventDefault();
             
           
-        let user_record = await fetch(`http://localhost:3000/users?user_name=${username.value}`)
+        let user_record = await fetch(`http://localhost:3000/theusers?user_name=${username.value}`)
         let user_records = await user_record.json();
         //console.log(user_records[0].user_name)
         //console.log(username.value)
-        if ( username.value.length > 0 && pass.value.length > 0)
+        if ( username.value.length > 0 && the_pass.value.length > 0)
         {
             if(user_records.length > 0)
             {
-                if(user_records[0].password != pass.value)
+                if(user_records[0].password != the_pass.value)
                 {
                     show_div();
                     check_data(" Wrong Password, Password Does Not Match Your Password");
                     setTimeout("location.reload()",3000)
-                
                 }
                 else
-                {
-                    let emp_record = await fetch(`http://localhost:3000/emp?user_name=${username.value}`)
+                {   // take attendance
+                    let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
                     let emp_records = await emp_record.json();
                     //console.log(emp_records[0].day)
                     if(emp_records.length > 0)
                     {
                         if(emp_records[emp_records.length-1].day == new Date().toISOString().slice(0, 10) )
                         {
-                            setTimeout("location.href = '3-confirm_attend.html';",1000);
+                            setTimeout("location.href = '../htmls/confirm_attendance.html';",1000);
                         }
                         else
                         {
-                            let dataa = {
-                                "full_name": user_records[0].fullname, 
+                            let the_data = {
+                                "fullName": user_records[0].fullname, 
                                 "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                                 "day": new Date().toISOString().slice(0, 10) }     
                             
-                            await fetch('http://localhost:3000/emp', {
+                            await fetch('http://localhost:3000/employee', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
                                 },
-                                body: JSON.stringify(dataa),
+                                body: JSON.stringify(the_data),
                                 })
-                            setTimeout("location.href = '3-confirm_attend.html';",1000);
+                            setTimeout("location.href = '../htmls/confirm_attendance.html';",1000);
                         }
                     } 
                     else
                     {
-                        let dataa = {
+                        let the_data = {
                             "full_name": user_records[0].fname+' '+user_records[0].lname, 
                             "user_name" : username.value,
                             "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                             "day": new Date().toISOString().slice(0, 10) }     
                         
-                        await fetch('http://localhost:3000/emp', {
+                        await fetch('http://localhost:3000/employee', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
-                            body: JSON.stringify(dataa),
+                            body: JSON.stringify(the_data),
                             })
-                        setTimeout("location.href = '3-confirm_attend.html';",1000);
+                        setTimeout("location.href = '../htmls/confirm_attendance.html';",1000);
                     }
                     
                 }
@@ -90,9 +88,7 @@ window.addEventListener('load',function () {
             show_div();
             check_data("Empty data, You should Enter User Name and Password");
             setTimeout("location.reload()",3000)
-        }
-                
-               
+        }         
                               
     })
     
@@ -100,7 +96,7 @@ window.addEventListener('load',function () {
 })
 
 function show_div() {
-    var element = document.getElementById("myDIV");
+    var element = document.getElementById("thediv");
     element.classList.add("mystyle");
  }
 
@@ -111,7 +107,7 @@ function show_div() {
     //node2.setAttribute('class',"close")
     var textnode = document.createTextNode(displayed);
     node.appendChild(textnode);
-    document.getElementById("myDIV").appendChild(node);
+    document.getElementById("thediv").appendChild(node);
     //document.getElementById("myDIV").appendChild(node2);
     
  }

@@ -5,7 +5,7 @@ window.addEventListener('load', function() {
     confirm.addEventListener('click', async function (e) {
         e.preventDefault();
         
-        let emp_record = await fetch(`http://localhost:3000/emp?user_name=${username.value}`)
+        let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
         let emp_records = await emp_record.json();
         
         

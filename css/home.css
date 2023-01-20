@@ -121,7 +121,7 @@ section .main .main_image img{
 }
 
 section p{
-    width: 650px;
+    width: 45vw;
     text-align: justify;
     position: relative;
     left: 123px;

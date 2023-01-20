@@ -5,31 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login & Signup Form</title>
-    <link rel="stylesheet" href="../css/login_style.css">
+    <link rel="stylesheet" href="../css/log.css" />
   </head>
   <body>
-    <section class="wrapper">
+    <section class="wrapper">      
       <div class="form login">
-       
-        <form action="#">
-         
-            <input type="text" id="username" placeholder="Email address" required />
-            <span id="usernameerror">User Name Is Invalid</span>
-         
-            <input type="password" id="pass"  placeholder="Password" required />
-            <span id="userpasserror">User password Is Invalid</span>
-         
-            <a href="#">Forgot password?</a>
-         
-            <input type="submit" value="Login" id="loginbtn"/>
-
-         
+        <header>login</header>
+        <form action="" method="POST">
+          <input type="text" class="form-control" name="userName" placeholder="User Name" id="user_name" required />
+          <span id="user_name_error">The User Name Is Invalid</span>
+          <input type="text" class="form-control" name="password" placeholder="password" id="password" required />
+          <span id="password_error">The Password Is Invalid</span>
+          </div>
+          <input type="submit" value="login" id="loginbtn" disabled/>
         </form>
       </div>
-      <script src="js/JQuery-3.3.1.min.js"></script>
-      <script src="js/popper.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+      <div id="thediv">
+
+      </div>
+      
+      <script src="../js/login.js"></script>
+      <script src="../js/JQuery-3.3.1.min.js"></script>
+      <script src="../js/popper.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
       <script src="https://smtpjs.com/v3/smtp.js"></script>
-      </section>
+    </section>
   </body>
 </html>

@@ -1,125 +1,118 @@
+
+// style the register validate
 window.addEventListener('load',function(){
 		
+// Using Node.js `require()`
+//const { generateFromEmail, generateUsername } = require("unique-username-generator");
+// Using ES6 imports
+//import {generateFromEmail, generateUsername} from '../node_modules/unique-username-generator';
+
     userfirstname = document.getElementById('first_name');
     userlastname = document.getElementById('last_name');
-    userage = document.getElementById('age');
-    useradd = document.getElementById('add');
-    useremail = document.getElementById('e_mail');
-    userpass = this.document.getElementById('pass');
-    
-    userfnameerror = document.getElementById('userfnameerror');
-    userlnameerror = document.getElementById('userlnameerror');
-    userageerror = document.getElementById('userageerror');
-    useradderror = document.getElementById('useradderror');
-    useremailerror = document.getElementById('useremailerror');
-    userpasserror =  this.document.getElementById('userpasserror');
+    userage = document.getElementById('the_age');
+    useradd = document.getElementById('the_address');
+    useremail = document.getElementById('the_Email');
     
     
+    fname_error = document.getElementById('fname_error');
+    lname_error = document.getElementById('lname_error');
+    age_error = document.getElementById('age_error');
+    address_error = document.getElementById('address_error');
+    email_error = document.getElementById('email_error');
+    
+    
+    // first Name 
     userfirstname.addEventListener('blur', function () {
-
         if (!isuserfnamevalide()) {
             userfirstname.focus();
             userfirstname.select();
-            userfnameerror.style.display = 'block';
+            fname_error.style.display = 'block';
             userfirstname.classList.add("error");
             
             
         } else {
-            userfnameerror.style.display = 'none';
+            fname_error.style.display = 'none';
             userfirstname.classList.remove("error");
             
         }
-        check_regbtn();
+        check_regester_btn();
 
     });
+    //last Name
     userlastname.addEventListener('blur', function () {
 
         if (!isuserlnamevalide()) {
             userlastname.focus();
             userlastname.select();
-            userlnameerror.style.display = 'block';
+            lname_error.style.display = 'block';
             userlastname.classList.add("error");
             
         } else {
-            userlnameerror.style.display = 'none';
+            lname_error.style.display = 'none';
             userlastname.classList.remove("error");
             
         }
-        check_regbtn();
+        check_regester_btn();
 
     });
-   
+   // the Age
     userage.addEventListener('blur',function(){
         if (!isuseragevalide()) {
             // login
             userage.focus();
             userage.select();
-            userageerror.style.display = 'block';
+            age_error.style.display = 'block';
             userage.classList.add("error");
             
         } else {
-            userageerror.style.display = 'none';
+            age_error.style.display = 'none';
             userage.classList.remove("error");
             
         }
-        check_regbtn();
+        check_regester_btn();
     });	
-
+   // Address
     useradd.addEventListener('blur',function(){
         if (!isuseraddvalide()) {
             useradd.focus();
             useradd.select();
-            useradderror.style.display = 'block';
+            address_error.style.display = 'block';
             useradd.classList.add("error");
             
         } else {
-            useradderror.style.display = 'none';
+            address_error.style.display = 'none';
             useradd.classList.remove("error");
             
         }
-        check_regbtn();
+        check_regester_btn();
 
     });	
+    // email
     useremail.addEventListener('blur',function(){
         if (!isuseremailvalide()) {
             useremail.focus();
             useremail.select();
-            useremailerror.style.display = 'block';
+            email_error.style.display = 'block';
             useremail.classList.add("error");
             
         } else {
-            useremailerror.style.display = 'none';
+            email_error.style.display = 'none';
             useremail.classList.remove("error");
-            
         }
-        check_regbtn();
+        check_regester_btn();
     });	
-
-    userpass.addEventListener('blur',function(){
-        if (!isuserpassvalide()) {
-            userpass.focus();
-            userpass.select();
-            userpasserror.style.display = 'block';
-            userpass.classList.add("error");
-            
-        } else {
-            userpasserror.style.display = 'none';
-            userpass.classList.remove("error");
-            
-        }
-        check_regbtn();
-    })
 
 });
 
-function check_regbtn() {
-    if(userfirstname.value.length>0 && userlastname.value.length>0 && userage.value.length>0 && useradd.value.length>0 && useremail.value.length>0 && userpass.value.length>0)
+
+function check_regester_btn() {
+    if(userfirstname.value.length>0 && userlastname.value.length>0 && userage.value.length>0 && useradd.value.length>0 && useremail.value.length>0)
     {
-        document.getElementById('regbtn').disabled = false
+        document.getElementById('regester_btn').disabled = false
     }
 }
 
-
+// the Validation with Regex
 function isuserfnamevalide() {
     return userfirstname.value.match(/^[A-Za-z]+$/);
 }
@@ -135,45 +128,69 @@ function isuseraddvalide(){
 function isuseremailvalide() {
     return useremail.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/);
 }
-function isuserpassvalide(){
-    return useradd.value.match(/^(?=.*[0-9])$/); // Assert a string has at least one number;
-}
 
-// redi
-function redi(){
-    document.getElementById("loginbtn").addEventListener('click', () => {
+// go to login
+function goto_login(){
+    document.getElementById("log_btn").addEventListener('click', () => {
         window.location.href = '../htmls/login.html'
     }); 
 }
 
-login = document.getElementById("loginbtn");
-login.addEventListener('click',redi())
+login = document.getElementById("log_btn");
+login.addEventListener('click',goto_login())
     
 
 
-// send data to server
-register = document.getElementById("regbtn")
-register.addEventListener('click',async function(e) {
+// when click register we send data to server and create password and user name randum
+the_register = document.getElementById("regester_btn")
+the_register.addEventListener('click',async function(e) {
     e.preventDefault();
     
-    fname = document.getElementById('fname')
-    lname = document.getElementById('lname')
-    e_mail = document.getElementById('e_mail')
-    address = document.getElementById('add')
-    age = document.getElementById('age')
-    userpass = this.document.getElementById('pass');
+    userfirstname = document.getElementById('first_name');
+    userlastname = document.getElementById('last_name');
+    userage = document.getElementById('the_age');
+    useradd = document.getElementById('the_address');
+    useremail = document.getElementById('the_Email');
+
+    // get random data for password and user name 
+    //const username = generateFromEmail(
+      //  useremail.value,
+      //  3 ,// 3 digit
+     // );
+     function generate_Random_Name() {
+        let length = 7;
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+       userName = generate_Random_Name();
+       console.log(userName);
+      // generate password
+      function generate_Random_Password() {
+        let length = 5,
+        charset = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        pass = "";
+        for (let i = 0, n = charset.length; i < length; ++i) {
+            pass += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return pass;}
+       the_password = generate_Random_Password();
 
     let the_date = {
-        "fname": fname.value,
-        "lname": lname.value,
-        "age": age.value,
-        "e_mail": e_mail.value,
-        "address" : address.value,
-        "user_name" : userName,
-        "password" : userpass.value,  
+        "fname": userfirstname.value,
+        "lname": userlastname.value,
+        "age": userage.value,
+        "e_mail": useremail.value,
+        "address" : useradd.value,
+        "user_name" : "iiii",
+        "password":the_password,
     }
     
-    await fetch('http://localhost:3000/users', {
+    await fetch('http://localhost:3000/theusers', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -189,12 +206,10 @@ register.addEventListener('click',async function(e) {
 
 function Sendmail(){
     Email.send({
-        Host : "smtp.elasticemail.com",
-        Username : "zeinabelazzab875@gmail.com",
-        Password : "8AEA0596BD082E6B9609B67DC67C42377995",
-        To : useremail.value ,
-        From : "zeinabelazzab875@gmail.com",
-        Subject : "This is the subject of mail",
+        SecureToken : "f2823ef3-9456-45e1-bb42-ac64f14860d5",
+        To : useremail.value,
+        From : "zeinabelazab123@gmail.com",
+        Subject : "This is the subject",
         Body : `
         <h4>Employee Data</h4>s
         <table width="100%" border="1">
@@ -211,16 +226,19 @@ function Sendmail(){
         </thead>
         <tbody>
           <tr>
-            <td>${fname.value}  ${lname.value}</th>
-            <td>${fname.value}</td>
-            <td>${lname.value}</td>
-            <td>${address.value}</td>
-            <td>${e_mail.value}</td>
-            <td>${age.value}</td>
-            <td>${userpass.value}</td> 
+            <td>${userfirstname.value}  ${userlastname.value}</th>
+            <td>${userfirstname.value}</td>
+            <td>${userlastname.value}</td>
+            <td>${useradd.value}</td>
+            <td>${useremail.value}</td>
+            <td>${userage.value}</td>
+            <td>${username}</td> 
+            <td>${the_password}</td> 
           </tr>
         </tbody>
       </table>      
         `
-    })
+    }).then(
+        message => alert(message)
+      );
 }

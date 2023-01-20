@@ -8,59 +8,35 @@
     <link rel="stylesheet" href="../css/login_style.css" />
   </head>
   <body>
-    <section class="wrapper">
+    <section class="wrapper">      
       <div class="form signup">
         <header>Signup</header>
-        <form action="#">
+        <form action="" method="POST">
           <input type="text" class="form-control" name="first" placeholder="First name" id="first_name" required />
-          <span id="userfnameerror">User Name Is Invalid</span>
+          <span id="fname_error">The First Name Is Invalid</span>
           <input type="text" class="form-control" name="last" placeholder="last name" id="last_name" required />
-          <span id="userlnameerror">User Name Is Invalid</span>
-          <input name="address" id="add" type="text" class="form-control" placeholder="Address">
-		  <span id="useradderror">User Address Is Invalid</span>
-          <input type="text" class="form-control" name="the_email" placeholder="Email address" id="e_mail" required />
-          <span id="useremailerror">User Email Is Invalid</span>
-          <input name="age" id="age" type="text" class="form-control" placeholder="Age">
-		  <span id="userageerror">User Age Is Invalid</span>
-          <input type="password" class="form-control" placeholder="Password"  id="pass" required />
-          <span id="userpasserror">User password Is Invalid</span>
-
+          <span id="lname_error">The Last Name Is Invalid</span>
+          <input name="address"  type="text" class="form-control" placeholder="Address" id="the_address" required>
+		      <span id="address_error">The Address Is Invalid</span>
+          <input type="text" class="form-control" name="the_email" placeholder="Email address" id="the_Email" required />
+          <span id="email_error">The Email Is Invalid</span>
+          <input name="age"  type="text" class="form-control" placeholder="Age" id="the_age" required>
+		      <span id="age_error">The Age Is Invalid</span>
           <div class="checkbox">
             <input type="checkbox" id="signupCheck" />
             <label for="signupCheck">I accept all terms & conditions</label>
           </div>
-          <input type="submit" value="Signup" id="regbtn" disabled/>
+          <input type="submit" value="Signup" id="regester_btn" disabled/>
         </form>
       </div>
-
-      <div class="form login">
-        <header>Login</header>
-        <form action="#">
-          <input type="text" id="username" placeholder="Email address" required />
-          <span id="usernameerror">User Name Is Invalid</span>
-          <input type="password" id="pass"  placeholder="Password" required />
-          <span id="userpasserror">User password Is Invalid</span>
-          <a href="#">Forgot password?</a>
-          <input type="submit" value="Login" id="loginbtn"/>
-        </form>
+      <div id="have_account">
+        <label >I already have account </label>
+        <button id="log_btn">Login</button>
       </div>
-
-      <script>
-        const wrapper = document.querySelector(".wrapper"),
-          signupHeader = document.querySelector(".signup header"),
-          loginHeader = document.querySelector(".login header");
-
-        loginHeader.addEventListener("click", () => {
-          wrapper.classList.add("active");
-        });
-        signupHeader.addEventListener("click", () => {
-          wrapper.classList.remove("active");
-        });
-      </script>
-
-      <script src="js/JQuery-3.3.1.min.js"></script>
-      <script src="js/popper.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+      <script src="../js/home.js"></script>
+      <script src="../js/JQuery-3.3.1.min.js"></script>
+      <script src="../js/popper.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
       <script src="https://smtpjs.com/v3/smtp.js"></script>
     </section>
   </body>

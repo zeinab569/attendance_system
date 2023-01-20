@@ -1,0 +1,23 @@
+{
+  "name": "the_javascript_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "Server": "json-server --watch db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeinab569/attendance_system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeinab569/attendance_system/issues"
+  },
+  "homepage": "https://github.com/zeinab569/attendance_system#readme",
+  "dependencies": {
+    "unique-username-generator": "^1.1.3"
+  }
+}

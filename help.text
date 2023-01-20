@@ -1,1 +1,8 @@
+npm init –y
+npm install -g json-server
+creat db.json
 json-server --watch db.json
+1E7F4E122D2D7961D4D6195BD5B8335CED2F
+npm install unique-username-generator --save
+941fc71a-64b7-48af-999a-264569cf04ec
+f2823ef3-9456-45e1-bb42-ac64f14860d5
