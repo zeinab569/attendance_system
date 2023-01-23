@@ -56,7 +56,6 @@
     text-decoration: none;
   }
    
-  
   body {
     background-image: url(../images/bgforconfirm.jpg);
     background-position: center;
@@ -68,9 +67,9 @@
   }
   .mystyle {
     width: 100%;
+    margin-top: 20px;
     padding: 25px;
-    background-color: coral;
-    color: white;
+    color: rgb(223, 10, 10);
     font-size: 25px;
     box-sizing: border-box;
   }

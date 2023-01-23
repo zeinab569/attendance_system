@@ -1,32 +1,35 @@
 window.addEventListener('load', function() {
     username = document.getElementById('username')
-    confirm = document.getElementById('subbtn')
+    confirm = document.getElementById('confirm-attendance')
 
-    confirm.addEventListener('click', async function (e) {
-        e.preventDefault();
-        
-        let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
-        let emp_records = await emp_record.json();
-        
-        
-        for (let i = 0; i < emp_records.length; i++)
-        {
-            if(emp_records[i].day == new Date().toISOString().slice(0, 10))
+    if(confirm){
+        confirm.addEventListener('click', async function (e) {
+            e.preventDefault();
+            
+            let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
+            let emp_records = await emp_record.json();
+            
+            
+            for (let i = 0; i < emp_records.length; i++)
             {
-                show_div();
-                fulname = `Name : ${emp_records[i].full_name}`
-                localStorage.setItem("FullName", emp_records[i].full_name);
-                usrname = `User Name : ${emp_records[i].user_name}`
-                localStorage.setItem("UserName", emp_records[i].user_name);
-                Time = `Time : ${emp_records[i].login_time}`
-                localStorage.setItem("Time", emp_records[i].login_time);
-                diplay_data(fulname,usrname,Time)
-                setTimeout("location.href = '4-report.html';",4000);   
+                if(emp_records[i].day == new Date().toISOString().slice(0, 10))
+                {
+                    show_div();
+                    fulname = `Name : ${emp_records[i].full_name}`
+                    localStorage.setItem("FullName", emp_records[i].full_name);
+                    usrname = `User Name : ${emp_records[i].user_name}`
+                    localStorage.setItem("UserName", emp_records[i].user_name);
+                    Time = `Time : ${emp_records[i].login_time}`
+                    localStorage.setItem("Time", emp_records[i].login_time);
+                    diplay_data(fulname,usrname,Time)
+                    setTimeout("location.href = '../htmls/report.html';",5000);   
+                }
+    
             }
-
-        }
-          
-    })
+              
+        })
+    }
+    
 });
 
 function show_div() {

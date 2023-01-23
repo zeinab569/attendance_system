@@ -12,6 +12,12 @@
     }
   ],
   "employee": [
-    
+    {
+      "full_name": "zeinab elazab",
+      "user_name": "iiii",
+      "login_time": "05:40 PM",
+      "day": "2023-01-23",
+      "id": 1
+    }
   ]
 }

@@ -1,7 +1,6 @@
 
 // style the register validate
 window.addEventListener('load',function(){
-		
 // Using Node.js `require()`
 //const { generateFromEmail, generateUsername } = require("unique-username-generator");
 // Using ES6 imports
@@ -22,40 +21,48 @@ window.addEventListener('load',function(){
     
     
     // first Name 
-    userfirstname.addEventListener('blur', function () {
-        if (!isuserfnamevalide()) {
-            userfirstname.focus();
-            userfirstname.select();
-            fname_error.style.display = 'block';
-            userfirstname.classList.add("error");
-            
-            
-        } else {
-            fname_error.style.display = 'none';
-            userfirstname.classList.remove("error");
-            
-        }
-        check_regester_btn();
+    if(userfirstname){
+        userfirstname.addEventListener('blur', function () {
+            if (!isuserfnamevalide()) {
+                userfirstname.focus();
+                userfirstname.select();
+                fname_error.style.display = 'block';
+                userfirstname.classList.add("error");
+                
+                
+            } else {
+                fname_error.style.display = 'none';
+                userfirstname.classList.remove("error");
+                
+            }
+            check_regester_btn();
+    
+        });
 
-    });
+    }
+    
     //last Name
-    userlastname.addEventListener('blur', function () {
+    if(userlastname){
+        userlastname.addEventListener('blur', function () {
 
-        if (!isuserlnamevalide()) {
-            userlastname.focus();
-            userlastname.select();
-            lname_error.style.display = 'block';
-            userlastname.classList.add("error");
-            
-        } else {
-            lname_error.style.display = 'none';
-            userlastname.classList.remove("error");
-            
-        }
-        check_regester_btn();
-
-    });
+            if (!isuserlnamevalide()) {
+                userlastname.focus();
+                userlastname.select();
+                lname_error.style.display = 'block';
+                userlastname.classList.add("error");
+                
+            } else {
+                lname_error.style.display = 'none';
+                userlastname.classList.remove("error");
+                
+            }
+            check_regester_btn();
+    
+        });
+    }
+   
    // the Age
+   if(userage){
     userage.addEventListener('blur',function(){
         if (!isuseragevalide()) {
             // login
@@ -71,7 +78,10 @@ window.addEventListener('load',function(){
         }
         check_regester_btn();
     });	
+   }
+    
    // Address
+   if(useradd){
     useradd.addEventListener('blur',function(){
         if (!isuseraddvalide()) {
             useradd.focus();
@@ -87,20 +97,24 @@ window.addEventListener('load',function(){
         check_regester_btn();
 
     });	
+   }
     // email
-    useremail.addEventListener('blur',function(){
-        if (!isuseremailvalide()) {
-            useremail.focus();
-            useremail.select();
-            email_error.style.display = 'block';
-            useremail.classList.add("error");
-            
-        } else {
-            email_error.style.display = 'none';
-            useremail.classList.remove("error");
-        }
-        check_regester_btn();
-    });	
+    if(useremail){
+        useremail.addEventListener('blur',function(){
+            if (!isuseremailvalide()) {
+                useremail.focus();
+                useremail.select();
+                email_error.style.display = 'block';
+                useremail.classList.add("error");
+                
+            } else {
+                email_error.style.display = 'none';
+                useremail.classList.remove("error");
+            }
+            check_regester_btn();
+        });	
+    }
+    
 
 });
 
@@ -137,71 +151,77 @@ function goto_login(){
 }
 
 login = document.getElementById("log_btn");
-login.addEventListener('click',goto_login())
+if(login){
+    login.addEventListener('click',goto_login())
+}
+
     
 
 
 // when click register we send data to server and create password and user name randum
 the_register = document.getElementById("regester_btn")
-the_register.addEventListener('click',async function(e) {
-    e.preventDefault();
+if(the_register){
+    the_register.addEventListener('click',async function(e) {
+        e.preventDefault();
+        
+        userfirstname = document.getElementById('first_name');
+        userlastname = document.getElementById('last_name');
+        userage = document.getElementById('the_age');
+        useradd = document.getElementById('the_address');
+        useremail = document.getElementById('the_Email');
     
-    userfirstname = document.getElementById('first_name');
-    userlastname = document.getElementById('last_name');
-    userage = document.getElementById('the_age');
-    useradd = document.getElementById('the_address');
-    useremail = document.getElementById('the_Email');
-
-    // get random data for password and user name 
-    //const username = generateFromEmail(
-      //  useremail.value,
-      //  3 ,// 3 digit
-     // );
-     function generate_Random_Name() {
-        let length = 7;
-        var result = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        // get random data for password and user name 
+        //const username = generateFromEmail(
+          //  useremail.value,
+          //  3 ,// 3 digit
+         // );
+         function generate_Random_Name() {
+            let length = 7;
+            var result = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
         }
-        return result;
-    }
-       userName = generate_Random_Name();
-       console.log(userName);
-      // generate password
-      function generate_Random_Password() {
-        let length = 5,
-        charset = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        pass = "";
-        for (let i = 0, n = charset.length; i < length; ++i) {
-            pass += charset.charAt(Math.floor(Math.random() * n));
-        }
-        return pass;}
-       the_password = generate_Random_Password();
-
-    let the_date = {
-        "fname": userfirstname.value,
-        "lname": userlastname.value,
-        "age": userage.value,
-        "e_mail": useremail.value,
-        "address" : useradd.value,
-        "user_name" : "iiii",
-        "password":the_password,
-    }
+           userName = generate_Random_Name();
+           console.log(userName);
+          // generate password
+          function generate_Random_Password() {
+            let length = 5,
+            charset = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            pass = "";
+            for (let i = 0, n = charset.length; i < length; ++i) {
+                pass += charset.charAt(Math.floor(Math.random() * n));
+            }
+            return pass;}
+           the_password = generate_Random_Password();
     
-    await fetch('http://localhost:3000/theusers', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(the_date),
+        let the_date = {
+            "fname": userfirstname.value,
+            "lname": userlastname.value,
+            "age": userage.value,
+            "e_mail": useremail.value,
+            "address" : useradd.value,
+            "user_name" : "iiii",
+            "password":the_password,
+        }
+        
+        await fetch('http://localhost:3000/theusers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(the_date),
+        })
+      
+        setTimeout("location.href = '../htmls/login.html';",1000);
+        
+        
     })
-  
-    setTimeout("location.href = '../htmls/login.html';",1000);
-    
-    
-})
+}
+
 
 
 function Sendmail(){

@@ -7,24 +7,38 @@
     sans-serif;
 }
 body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0faff;
+  font-family: poppins;
+	font-size: 16px;
+	color: #fff;
 }
 .wrapper {
-  position: relative;
-  max-width: 570px;
-  width: 100%;
-  border-radius: 12px;
-  padding: 20px 30px 120px;
-  background: #4070f4;
-  box-shadow: 0
-    5px
-    10px
-    rgba(0,0,0,0.1 );
-  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+	margin: auto auto;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #000;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 40vw;
+	height: 60vh;
+}
+.wrapper::before{
+  background-image: url("../images/bgforconfirm.jpg");
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	content: "";
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	display: block;
+	filter: blur(2px);
 }
 .wrapper
   form {
@@ -35,11 +49,11 @@ body {
 }
 .form
   header {
-  font-size: 30px;
-  text-align: center;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
+    font-size: 32px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    text-align: center;
+    color: #fff;
 }
 form
   input {
@@ -51,36 +65,34 @@ form
   font-weight: 400;
   color: #333;
   border-radius: 8px;
-  width: 29vw;
   background: #fff;
-}
+ 
+  }
 
-#loginbtn{
-  margin-top: 15px;
-  font-size: 18px;
-  padding: 0 15px;
-  font-weight: 500;
-  cursor: pointer;
-  height: 60px;
-  width: 29vw;
-  text-align: center;
-  outline: none;
-  border: none;
-  color: #333;
-  border-radius: 8px;
-  background: #fff;
-}
+  #loginbtn{
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    height: 60px;
+    outline: none;
+    border: none;
+    color: rgb(11, 47, 211);
+    border-radius: 8px;
+    text-align: center;
+    background: #9cabd4;
+    width: 35.5vw;
+  }
+  
 span{
   display:none;
   color:red;
 }
 .mystyle {
   width: 100%;
-  padding: 25px;
-  background-color: coral;
-  color: white;
-  font-size: 25px;
-  box-sizing: border-box;
+  padding-top: 25px;
+  color: rgb(100, 4, 4);
+  font-size: 3rem;
 } 
 
   

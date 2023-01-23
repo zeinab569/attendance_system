@@ -4,40 +4,51 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins",
-    sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0faff;
+  font-family: poppins;
+	font-size: 16px;
+	color: #fff;
 }
 .wrapper {
-  position: relative;
-  max-width: 570px;
-  width: 100%;
-  border-radius: 12px;
-  padding: 20px
-    30px
-    120px;
-  background: #4070f4;
-  box-shadow: 0
-    5px
-    10px
-    rgba(0,0,0,0.1 );
-  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+	margin: auto auto;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #000;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 40vw;
+	height: 99vh;
 }
 
+.wrapper::before{
+  background-image: url("../images/bgforconfirm.jpg");
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	content: "";
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	display: block;
+	filter: blur(2px);
+}
 
 .form
   header {
-  font-size: 30px;
-  text-align: center;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
+    font-size: 32px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    text-align: center;
+    color: #fff;
 }
 
 .wrapper
@@ -49,15 +60,15 @@ body {
 }
 form
   input {
-  height: 60px;
-  outline: none;
-  border: none;
-  padding: 0 15px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #333;
-  border-radius: 8px;
-  background: #fff;
+    height: 60px;
+    outline: none;
+    border: none;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 8px;
+    background: #fff;
 }
 
 form
@@ -93,6 +104,8 @@ form
   padding: none;
   font-size: 18px;
   font-weight: 500;
+  background: #9cabd4;
+  color: rgb(11, 47, 211);
   cursor: pointer;
 }
 .form.login
@@ -103,7 +116,8 @@ form
 }
 span{
   display:none;
-  color:red;
+  color: #f1080883;
+  font-weight: bold;
 }
 .wrapper #have_account{
   color: #333;
@@ -118,11 +132,12 @@ span{
   padding: 9px;
   cursor: pointer;
   font-size: 23px;
-  font-weight: 600px;
-  color: #fff;
+  font-weight: 500;
+  color: rgb(11, 47, 211);
   border-radius: 8px;
-  background: #4070f4;
+  text-align: center;
+  background: #9cabd4;
   border: none;
-  width: 5vw;
+  width: 6vw;
 
  }
