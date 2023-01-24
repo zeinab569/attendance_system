@@ -1,4 +1,30 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
 body{
-    padding-top:200px;
-    background-color: #4CAF50;
+    padding-top:99px;
+    background-image: url(../images/bgforconfirm.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
+#name_of_emp,#name2_of_emp{
+    font-weight: bold;
+    color: blue;
+    padding: 7px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+li,#this_Day,#monthly{
+    font-weight: bold;
+    padding: 5px;
+    color: brown;
+    font-size: 1.2rem;
+    list-style-type: none;
+    background-color: #ddd;
+    
 }

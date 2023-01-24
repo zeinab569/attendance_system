@@ -7,3 +7,65 @@ npm install unique-username-generator --save
 941fc71a-64b7-48af-999a-264569cf04ec
 f2823ef3-9456-45e1-bb42-ac64f14860d5
 git push -u origin main
+
+<div class="attendance-list">
+          <h1>Attendance List</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>join Time</th>
+                <th>Date</th>
+                <th>user Name</th>
+                <th>Address</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody id="list_attendance">
+              
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+        let User_Data = await fetch(`http://localhost:3000/theusers`)
+    let user_Row = await User_Data.json();
+    
+    for (let i = 0; i < user_Row.length; i++) 
+    {
+        
+        let employee_Data = await fetch(`http://localhost:3000/employee?user_name=${user_Row[i].user_name}`)
+        let employee_Row = await employee_Data.json();
+        
+        att_arr = [];
+        for (let j = 0; x < employee_Row.length; x++) 
+        {
+            att_arr.push(employee_Row[j].day)
+        }
+        //let Attendance_Times = att_arr.length;
+
+        create_Table_Data(user_Row[i].id,user_Row[i].fname,user_Row[i].lname,user_Row[i].age,user_Row[i].address,"m","n")
+    }
+
+function create_Table_Data(fname,lname,age,add,m,n,p) {
+    let table_body= document.getElementById("list_attendance");
+    let row = table_body.insertRow(0);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
+    let cell6 = row.insertCell(5);
+    let cell7 = row.insertCell(6);
+    
+    cell1.innerHTML = fname;
+    cell2.innerHTML = lname;
+    cell3.innerHTML = age;
+    cell4.innerHTML = add;
+    cell5.innerHTML = m;
+    cell6.innerHTML=n;
+    cell7.innerHTML=p;  
+}                

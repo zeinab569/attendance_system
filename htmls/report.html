@@ -6,37 +6,41 @@
     <title>Daily and Monthly Reports</title>
     <link href="../css/report.css" rel="stylesheet" />
     <link href="../css/bootstrap.min.css"  rel="stylesheet"/>
-    
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <script src="https://jsuites.net/v4/jsuites.webcomponents.js"></script>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
 </head>
 <body >
     <div class="container">
         
         <div class="card">
             <div class="card-header">
-                <button id="daybtn" class="btn btn-primary" data-toggle="collapse" data-target="#cardone">Daily Report</button>
+                <button id="DayButton" class="btn btn-primary" data-toggle="collapse" data-target="#card_Daily">Daily Report</button>
+                <jsuites-calendar  format="YYYY-MM-DD"></jsuites-calendar>
             </div>
-            <div class="collapse" id="cardone">
-            <div id="daily" class="card-body text-center bg-warning font-weight-bold" >
-                
+            <div id="name_of_emp">
+
             </div>
-            <div class="card-footer">
-                <p id="fristfooter" class="font-weight-bold"></p>
+            <div class="collapse" id="card_Daily">
+            <div id="this_Day" class="card-body text-center  font-weight-bold" >
+                Attendabce Time is : 
             </div>
+            
            </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <button id="monbtn" class="btn btn-primary" data-toggle="collapse" data-target="#cardtwo">Monthly Report</button>
+                <button id="monbtn" class="btn btn-primary" data-toggle="collapse" data-target="#cardMonth">Monthly Report</button>
+                <jsuites-calendar  format="YYYY-MM-DD"></jsuites-calendar>
             </div>
-            <div class="collapse" id="cardtwo">
-            <div id="monthly" class="card-body text-center bg-warning font-weight-bold">
+            <div id="name2_of_emp">
+
+            </div>
+            <div class="collapse" id="cardMonth">
+            <div id="monthly" class="card-body text-center  font-weight-bold">
                 
-            </div>
-            <div class="card-footer">
-                <p id="secfooter" class="font-weight-bold"></p>
-            </div>
-           </div>
         </div>
     </div>
     

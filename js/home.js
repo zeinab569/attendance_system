@@ -176,11 +176,10 @@ if(the_register){
           //  3 ,// 3 digit
          // );
          function generate_Random_Name() {
-            let length = 7;
             var result = '';
             var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             var charactersLength = characters.length;
-            for ( var i = 0; i < length; i++ ) {
+            for ( let i = 0; i < 7; i++ ) {
                 result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
             return result;
@@ -189,10 +188,10 @@ if(the_register){
            console.log(userName);
           // generate password
           function generate_Random_Password() {
-            let length = 5,
             charset = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ",
             pass = "";
-            for (let i = 0, n = charset.length; i < length; ++i) {
+            let n = charset.length;
+            for (let i = 0; i < 5; ++i) {
                 pass += charset.charAt(Math.floor(Math.random() * n));
             }
             return pass;}
@@ -204,7 +203,7 @@ if(the_register){
             "age": userage.value,
             "e_mail": useremail.value,
             "address" : useradd.value,
-            "user_name" : "iiii",
+            "user_name" : userName,
             "password":the_password,
         }
         

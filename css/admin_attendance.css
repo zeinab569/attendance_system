@@ -1,4 +1,13 @@
 body{
     padding-top:200px;
-    background-color: #4CAF50;
+    background-image: url(../images/bgforconfirm.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
+
+th{
+    color: blue;
+    font-weight: bold;
+    font-size: 1.3rem;
 }

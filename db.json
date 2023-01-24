@@ -9,6 +9,26 @@
       "user_name": "iiii",
       "password": "DCvfY",
       "id": 1
+    },
+    {
+      "fname": "azza",
+      "lname": "elazab",
+      "age": "24",
+      "e_mail": "azaelazab123@gmail.com",
+      "address": "cairo",
+      "user_name": "XadVkHe",
+      "password": "O@A5N",
+      "id": 2
+    },
+    {
+      "fname": "fatma",
+      "lname": "elazab",
+      "age": "9",
+      "e_mail": "fatma34@gmail.coom",
+      "address": "mansoura",
+      "user_name": "spkxcI8",
+      "password": "HM@Qh",
+      "id": 3
     }
   ],
   "employee": [
@@ -17,7 +37,24 @@
       "user_name": "iiii",
       "login_time": "05:40 PM",
       "day": "2023-01-23",
-      "id": 1
+      "id": 1,
+      "logout_time": "2:17 AM"
+    },
+    {
+      "full_name": "azza elazab",
+      "user_name": "XadVkHe",
+      "login_time": "2:30 AM",
+      "day": "2023-01-23",
+      "id": 2,
+      "logout_time": "11:17 AM"
+    },
+    {
+      "full_name": "fatma elazab",
+      "user_name": "spkxcI8",
+      "login_time": "10:53 AM",
+      "day": "2023-01-24",
+      "id": 3,
+      "logout_time": "11:17 AM"
     }
   ]
 }

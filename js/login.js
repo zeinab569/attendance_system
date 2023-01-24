@@ -38,7 +38,7 @@ window.addEventListener('load',function () {
                             {
                                 //redirect to this page 
                                 setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);   
-                                //setTimeout("location.href = '../htmls/confirm_attendance.html';",1000);
+                               
                             }
                          // else login first then confirm attendance
                             else
@@ -46,7 +46,7 @@ window.addEventListener('load',function () {
                                 let the_data = {
                                     "fullName": user_records[0].fullname, 
                                     "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
-                                    "day": new Date().toISOString().slice(0, 10) }     
+                                    "day": new Date().toISOString().slice(0, 10) }  //"2023-01-10T02:00:00Z"   
                                 
                                 await fetch('http://localhost:3000/employee', {
                                     method: 'POST',
@@ -56,7 +56,7 @@ window.addEventListener('load',function () {
                                     body: JSON.stringify(the_data),
                                     })
                                     setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);
-                                //setTimeout("location.href = '../htmls/confirm_attendance.html';",1000);
+                               
                             }
                         } 
                         else
@@ -76,7 +76,7 @@ window.addEventListener('load',function () {
                                 body: JSON.stringify(the_data),
                                 })
                             setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);
-                           // setTimeout("location.href = '../htmls/confirm_attendance.html';",1000);
+                           
                         }
                         
                     }
