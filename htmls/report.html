@@ -9,6 +9,7 @@
     <script src="https://jsuites.net/v4/jsuites.js"></script>
     <script src="https://jsuites.net/v4/jsuites.webcomponents.js"></script>
     <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+
  
 </head>
 <body >
@@ -18,27 +19,59 @@
             <div class="card-header">
                 <button id="DayButton" class="btn btn-primary" data-toggle="collapse" data-target="#card_Daily">Daily Report</button>
                 <jsuites-calendar  format="YYYY-MM-DD"></jsuites-calendar>
+                <input type="text" id="the_user_name" placeholder="user name"/>
             </div>
             <div id="name_of_emp">
 
             </div>
-            <div class="collapse" id="card_Daily">
-            <div id="this_Day" class="card-body text-center  font-weight-bold" >
-                Attendabce Time is : 
-            </div>
-            
-           </div>
+            <div class="tab-pane">
+                <table class="table table-secondary" id="tabled">
+                  <thead class="table-primary" >
+                    <tr>
+                      <th>ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Attendabce Time</th>
+                      <th>Age</th>
+                      <th>Address</th>
+                      <th>Logout_Time</th>
+                      <th>The Day</th>
+                    </tr>
+                  </thead>
+                  <tbody  id="Dailytable">
+                  </tbody>
+                </table>
+              </div>
         </div>
 
         <div class="card">
             <div class="card-header">
                 <button id="monbtn" class="btn btn-primary" data-toggle="collapse" data-target="#cardMonth">Monthly Report</button>
-                <jsuites-calendar  format="YYYY-MM-DD"></jsuites-calendar>
+                <jsuites-calendar  format="YYYY-MM-DD" id="monthrange"></jsuites-calendar>
+                <input type="text" id="the_user_name" placeholder="user name"/>
             </div>
             <div id="name2_of_emp">
 
             </div>
-            <div class="collapse" id="cardMonth">
+            <div class="tab-pane">
+                <table class="table table-secondary">
+                  <thead class="table-primary" >
+                    <tr>
+                      <th>ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Attendance Times</th>
+                      <th>Late Times</th>
+                      <th>Absence Times</th>
+                      <th>Absence Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody  id="monthtable">
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="collapse" id="cardMonth">
             <div id="monthly" class="card-body text-center  font-weight-bold">
                 
         </div>

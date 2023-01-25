@@ -29,6 +29,16 @@
       "user_name": "spkxcI8",
       "password": "HM@Qh",
       "id": 3
+    },
+    {
+      "fname": "ibrahim",
+      "lname": "elazab",
+      "age": "6",
+      "e_mail": "ibrahim@gmail.com",
+      "address": "cairo",
+      "user_name": "92b6yMc",
+      "password": "QX9dy",
+      "id": 4
     }
   ],
   "employee": [
@@ -55,6 +65,38 @@
       "day": "2023-01-24",
       "id": 3,
       "logout_time": "11:17 AM"
+    },
+    {
+      "full_name": "ibrahim elazab",
+      "user_name": "92b6yMc",
+      "login_time": "11:50 AM",
+      "day": "2023-01-25",
+      "id": 4,
+      "logout_time": "11:60 AM"
+    },
+    {
+      "full_name": "ibrahim elazab",
+      "user_name": "92b6yMc",
+      "login_time": "12:50 AM",
+      "day": "2023-01-26",
+      "id": 4,
+      "logout_time": "11:52 AM"
+    },
+    {
+      "full_name": "ibrahim elazab",
+      "user_name": "92b6yMc",
+      "login_time": "13:50 AM",
+      "day": "2023-01-27",
+      "id": 4,
+      "logout_time": "11:30 AM"
+    },
+    {
+      "full_name": "zeinab elazab",
+      "user_name": "iiii",
+      "login_time": "09:00 PM",
+      "day": "2023-01-24",
+      "id": 1,
+      "logout_time": "3:17 AM"
     }
   ]
 }

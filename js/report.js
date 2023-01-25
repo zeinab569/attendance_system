@@ -1,86 +1,40 @@
 window.addEventListener('load', function () {
-    
-    let fulname = localStorage.getItem("FullName");
     name_of_employee = document.getElementById('name_of_emp');
-    name_of_employee.innerHTML += fulname;
-
     name2_of_employee = document.getElementById('name2_of_emp');
-    name2_of_employee.innerHTML += fulname;
+    let username = localStorage.getItem("UserName");
+    let user_Name = document.getElementById('the_user_name');
 
-    let usrname = localStorage.getItem("UserName");
-
-    let attend_time = localStorage.getItem("Time");
-
-    // with calender
+    // with calender daily
     document.querySelector('jsuites-calendar').addEventListener('onchange', async function(e) {
-        let users = await fetch(`http://localhost:3000/theusers?user_name=${usrname}`)
+        let users = await fetch(`http://localhost:3000/theusers?user_name=${user_Name.value}`)
             let user_Row = await users.json();
 
-            let employees = await fetch(`http://localhost:3000/employee?user_name=${usrname}`)
+            let employees = await fetch(`http://localhost:3000/employee?user_name=${user_Name.value}`)
             let employee_Row = await employees.json();
-           
+            name_of_employee.innerHTML = `${user_Row[0].fname} ${user_Row[0].lname}`;
             for (let i = 0; i < employee_Row.length; i++) 
             {
-                if( e.target.value == employee_Row[i].day ){
-                    alert("yes");
-                }
-                else{
-                    alert(employee_Row[i].day +"and"+ e.target.value);
-                }
-            }
+                if( e.target.value.slice(0,10) == employee_Row[i].day ){
+                   table_data1(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,employee_Row[i].login_time,user_Row[0].age,user_Row[0].address,employee_Row[i].logout_time,employee_Row[i].day);
+                } 
+            }  
     });
+   
+    // with calender range in monthly
+    document.getElementById('monthrange').addEventListener('onclose', async function(e) {
 
-    document.querySelector('jsuites-calendar').addEventListener('onclose', function(e) {
-        console.log('Calendar is closed');
-    });
-
- // without calender
-     //daily 
-    // (fname) (lname) (logintime) (logout time) (age) (address)
-    daily_button = document.getElementById('DayButton')
-    if(daily_button){
-        daily_button.addEventListener('click', async function(e) {
-            e.preventDefault();
-
-            let users = await fetch(`http://localhost:3000/theusers?user_name=${usrname}`)
+        let users = await fetch(`http://localhost:3000/theusers?user_name=${user_Name.value}`)
             let user_Row = await users.json();
-            
-            let employees = await fetch(`http://localhost:3000/employee?user_name=${usrname}`)
+
+            let employees = await fetch(`http://localhost:3000/employee?user_name=${user_Name.value}`)
             let employee_Row = await employees.json();
 
-            // div1
-            day_div = document.getElementById('this_Day')
-            day_div.innerHTML += attend_time
-            
-            create_element("li",`First Name :-  ${user_Row[0].fname}`,'this_Day')
-            create_element("li",`Last Name  :- ${user_Row[0].lname}`,'this_Day')
-            create_element("li",`The Age of emp  :-${user_Row[0].age}`,'this_Day')
-            create_element("li",`Address    :-${user_Row[0].address}`,'this_Day')
-            create_element("li",`Logout_Time:-${employee_Row[0].logout_time}`,'this_Day')
+            name2_of_employee.innerHTML = `${user_Row[0].fname} ${user_Row[0].lname}`;
 
-            document.getElementById('DayButton').disabled = true
-        });
-    }
- 
-    // monthly 
-    // (Attendance_Times) (Absence_Times) (Late_Times) (Absence Rate)
-    monthly_button = document.getElementById('monbtn')
-    if(monthly_button){
-        monthly_button.addEventListener('click', async function(e) {
-            e.preventDefault();
-    
-            let users = await fetch(`http://localhost:3000/theusers?user_name=${usrname}`)
-            let user_Row = await users.json();
-    
-            let employees = await fetch(`http://localhost:3000/employee?user_name=${usrname}`)
-            let employee_Row = await employees.json();
-    
             attindance_days = [];  
             for (let i = 0; i < employee_Row.length; i++) 
             {
-                
                 attindance_days.push(employee_Row[i].day)
-    
             }
             let Attendance_Times = attindance_days.length;
             let Absence_Times = 26-attindance_days.length; // only friday off
@@ -89,28 +43,119 @@ window.addEventListener('load', function () {
             let Late_Times = 0
             for (let i = 0; i < employee_Row.length; i++) 
             {
-                if( employee_Row[i].login_time !=  "08:30 AM" )
+                if( employee_Row[i].login_time >=  "08:30 AM" )
                 {
                     Late_Times = Late_Times +1;
                 }
             } 
-            
             // absence rate
             let Absence_Rate_in_month=((Absence_Times / 26)*100).toFixed(2);
+            table_data2(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,Attendance_Times,Late_Times,Absence_Times,Absence_Rate_in_month)
+            monthly_button.disabled = true
 
-            create_element("li",`Attendance Times :-  ${Attendance_Times}`,'monthly');
-            create_element("li",`Late Times   :- ${Late_Times}`,'monthly');
-            create_element("li",`Absence Times :- ${Absence_Times}`,'monthly');
-            create_element("li",`Absence Rate :- ${Absence_Rate_in_month}`,'monthly');
-            document.getElementById('monbtn').disabled = true
+    });
+
+ // without calender daily use button
+// (fname) (lname) (logintime) (logout time) (age) (address)
+    daily_button = document.getElementById('DayButton')
+    if(daily_button){
+        daily_button.addEventListener('click', async function(e) {
+            e.preventDefault();
+           
+           let users = await fetch(`http://localhost:3000/theusers?user_name=${user_Name.value}`)
+           let user_Row = await users.json();
+
+           let employee = await fetch(`http://localhost:3000/employee?user_name=${user_Name.value}`)
+           let employee_Row = await employee.json();
+           name_of_employee.innerHTML = `${user_Row[0].fname} ${user_Row[0].lname}`;
+
+        for (let i = 0; i < employee_Row.length; i++) 
+             {
+               table_data1(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,employee_Row[i].login_time,user_Row[0].age,user_Row[0].address,employee_Row[i].logout_time,employee_Row[i].day);
+          }
+          // document.getElementById('tabled').datatable({});
+            document.getElementById('DayButton').disabled = true
+        });
+    }
+ 
+//without calender  monthly use button
+// (Attendance_Times) (Absence_Times) (Late_Times) (Absence Rate)
+    monthly_button = document.getElementById('monbtn')
+    if(monthly_button){
+        monthly_button.addEventListener('click', async function(e) {
+            e.preventDefault();
+            let users = await fetch(`http://localhost:3000/theusers?user_name=${user_Name.value}`)
+            let user_Row = await users.json();
+    
+            let employees = await fetch(`http://localhost:3000/employee?user_name=${user_Name.value}`)
+            let employee_Row = await employees.json();
+           
+            name2_of_employee.innerHTML = `${user_Row[0].fname}  ${user_Row[0].lname}`;
+
+            attindance_days = [];  
+            for (let i = 0; i < employee_Row.length; i++) 
+            {
+                attindance_days.push(employee_Row[i].day)
+            }
+            let Attendance_Times = attindance_days.length;
+            let Absence_Times = 26-attindance_days.length; // only friday off
+            
+            
+            let Late_Times = 0
+            for (let i = 0; i < employee_Row.length; i++) 
+            {
+                if( employee_Row[i].login_time >=  "08:30 AM" )
+                {
+                    Late_Times = Late_Times +1;
+                }
+            } 
+            // absence rate
+            let Absence_Rate_in_month=((Absence_Times / 26)*100).toFixed(2);
+            table_data2(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,Attendance_Times,Late_Times,Absence_Times,Absence_Rate_in_month)
+            monthly_button.disabled = true
         });
     }
 });
 
 
-function create_element(tag_name,text,id) {
-    let node = document.createElement(tag_name);
-    let textnode = document.createTextNode(text);
-    node.appendChild(textnode);
-    document.getElementById(id).appendChild(node);
+
+function table_data1(ID, fname, lname, AttendanceTime ,age,addree,log_outT,day) {
+    let table = document.getElementById("Dailytable");
+    let row = table.insertRow(0);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
+    let cell6 = row.insertCell(5);
+    let cell7 = row.insertCell(6);
+    let cell8 = row.insertCell(7);
+    cell1.innerHTML = ID;
+    cell2.innerHTML = fname;
+    cell3.innerHTML = lname;
+    cell4.innerHTML = AttendanceTime;
+    cell5.innerHTML = age;
+    cell6.innerHTML = addree;
+    cell7.innerHTML = log_outT;
+    cell8.innerHTML = day;
+}
+
+function table_data2(ID, fname, lname, AttendanceTime ,age,addree,log_outT) {
+    let table = document.getElementById("monthtable");
+    let row = table.insertRow(0);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
+    let cell6 = row.insertCell(5);
+    let cell7 = row.insertCell(6);
+
+    cell1.innerHTML = ID;
+    cell2.innerHTML = fname;
+    cell3.innerHTML = lname;
+    cell4.innerHTML = AttendanceTime;
+    cell5.innerHTML = age;
+    cell6.innerHTML = addree;
+    cell7.innerHTML = log_outT;
 }

@@ -1,6 +1,6 @@
-
 // style the register validate
 window.addEventListener('load',function(){
+
 // Using Node.js `require()`
 //const { generateFromEmail, generateUsername } = require("unique-username-generator");
 // Using ES6 imports

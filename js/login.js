@@ -12,15 +12,16 @@ window.addEventListener('load',function () {
         login.addEventListener('click',async function(e) {
            
             e.preventDefault();
-            let user_record = await fetch(`http://localhost:3000/theusers?user_name=${username.value}`)
-            let user_records = await user_record.json();
-            console.log(user_records[0].user_name)
+            let user = await fetch(`http://localhost:3000/theusers?user_name=${username.value}`)
+            let user_Row = await user.json();
+
+            console.log(user_Row[0].user_name)
             console.log(username.value)
             if ( username.value.length > 0 && the_pass.value.length > 0)
             {   // have local data
-                if(user_records.length > 0)
+                if(user_Row.length > 0)
                 {
-                    if(user_records[0].password != the_pass.value)
+                    if(user_Row[0].password != the_pass.value)
                     {
                         show_div();
                         check_data(" you entered wrong password ");
@@ -29,12 +30,12 @@ window.addEventListener('load',function () {
                     }
                     else
                     {   // if already logined redirect to take attendance 
-                        let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
-                        let emp_records = await emp_record.json();
+                        let employee = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
+                        let employee_Row = await employee.json();
                         //console.log(emp_records[0].day)
-                        if(emp_records.length > 0)
+                        if(employee_Row.length > 0)
                         {
-                            if(emp_records[emp_records.length-1].day == new Date().toISOString().slice(0, 10) )
+                            if(employee_Row[employee_Row.length-1].day == new Date().toISOString().slice(0, 10) )
                             {
                                 //redirect to this page 
                                 setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);   
@@ -44,7 +45,7 @@ window.addEventListener('load',function () {
                             else
                             {
                                 let the_data = {
-                                    "fullName": user_records[0].fullname, 
+                                    "fullName": user_Row[0].fullname, 
                                     "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                                     "day": new Date().toISOString().slice(0, 10) }  //"2023-01-10T02:00:00Z"   
                                 
@@ -63,7 +64,7 @@ window.addEventListener('load',function () {
                         // login first  not logiend 
                         {
                             let the_data = {
-                                "full_name": user_records[0].fname+' '+user_records[0].lname, 
+                                "full_name": user_Row[0].fname+' '+user_Row[0].lname, 
                                 "user_name" : username.value,
                                 "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                                 "day": new Date().toISOString().slice(0, 10) }     
@@ -77,10 +78,8 @@ window.addEventListener('load',function () {
                                 })
                             setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);
                            
-                        }
-                        
-                    }
-                    
+                        }  
+                    }  
                 }
                 
                 else
@@ -95,13 +94,9 @@ window.addEventListener('load',function () {
                 show_div();
                 check_data("Empty data, You should Enter User Name and Password");
                 setTimeout("location.reload()",3000)
-            }         
-                                  
+            }                                
         }) 
-
-    }
-      
-    
+    }   
 })
 
 function show_div() {
@@ -112,13 +107,10 @@ function show_div() {
  // to show data
  function check_data(displayed) {
 
-    var node = document.createElement("H5");
-    var node2 = document.createElement("span")
-    //node2.setAttribute('class',"close")
-    var textnode = document.createTextNode(displayed);
+    let node = document.createElement("H5");
+    let node2 = document.createElement("span")
+    let textnode = document.createTextNode(displayed);
     node.appendChild(textnode);
-    document.getElementById("thediv").appendChild(node);
-    //document.getElementById("myDIV").appendChild(node2);
     
  }
 

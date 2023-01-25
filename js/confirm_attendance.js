@@ -7,24 +7,24 @@ window.addEventListener('load', function() {
         confirm.addEventListener('click', async function (e) {
             e.preventDefault();
             
-            let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
-            let emp_records = await emp_record.json();
+            let employee = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
+            let employee_Row = await employee.json();
             
             
-            for (let i = 0; i < emp_records.length; i++)
+            for (let i = 0; i < employee_Row.length; i++)
             {
-                if(emp_records[i].user_name == username.value){
-                    if(emp_records[i].day == new Date().toISOString().slice(0, 10))
+                if(employee_Row[i].user_name == username.value){
+                    if(employee_Row[i].day == new Date().toISOString().slice(0, 10))
                     {
                         show_div();
-                        fulname = `Name : ${emp_records[i].full_name}`
-                        localStorage.setItem("FullName", emp_records[i].full_name);
-                        usrname = `User Name : ${emp_records[i].user_name}`
-                        localStorage.setItem("UserName", emp_records[i].user_name);
-                        Time = `Time : ${emp_records[i].login_time}`
-                        localStorage.setItem("Time", emp_records[i].login_time);
+                        fulname = `Name : ${employee_Row[i].full_name}`
+                        localStorage.setItem("FullName", employee_Row[i].full_name);
+                        usrname = `User Name : ${employee_Row[i].user_name}`
+                        localStorage.setItem("UserName", employee_Row[i].user_name);
+                        Time = `Time : ${employee_Row[i].login_time}`
+                        localStorage.setItem("Time", employee_Row[i].login_time);
                         diplay_data(fulname,usrname,Time)
-                        setTimeout("location.href = '../htmls/report.html';",5000);   
+                        setTimeout("location.href = '../htmls/report.html';",4000);   
                     }
                 }
                 else{
@@ -35,24 +35,25 @@ window.addEventListener('load', function() {
         })
     }
     
+    // time leave
     if(log_out_time){
         log_out_time.addEventListener('click', async function (e) {
             e.preventDefault();
-            let emp_record = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
-            let emp_records = await emp_record.json();
-            for (let i = 0; i < emp_records.length; i++)
+            let employee = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
+            let employee_Row = await employee.json();
+            for (let i = 0; i < employee_Row.length; i++)
             {
-                if(emp_records[i].day == new Date().toISOString().slice(0, 10))
+                if(employee_Row[i].day == new Date().toISOString().slice(0, 10))
                 {
                     let the_data = {
                         "logout_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                           }   
-                        await fetch(`http://localhost:3000/employee/${emp_records[0].id}`, {
+                        await fetch(`http://localhost:3000/employee/${employee_Row[0].id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(the_data),
+                        body: JSON.stringify(the_data)
                         })
                 }
             }  
