@@ -140,7 +140,7 @@ function isuseraddvalide(){
     return useradd.value.match(/^[A-Za-z-0-9]+$/);
 }
 function isuseremailvalide() {
-    return useremail.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/);
+    return useremail.value.match(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/);
 }
 
 // go to login
@@ -214,10 +214,9 @@ if(the_register){
         },
         body: JSON.stringify(the_date),
         })
-      
-        setTimeout("location.href = '../htmls/login.html';",1000);
-        
-        
+
+        Sendmail();
+        setTimeout("location.href = '../htmls/login.html';",1000); 
     })
 }
 
@@ -227,7 +226,7 @@ function Sendmail(){
     Email.send({
         SecureToken : "f2823ef3-9456-45e1-bb42-ac64f14860d5",
         To : useremail.value,
-        From : "zeinabelazab123@gmail.com",
+        From : "zeinabelazzab875@gmail.com",
         Subject : "This is the subject",
         Body : `
         <h4>Employee Data</h4>s
@@ -261,3 +260,5 @@ function Sendmail(){
         message => alert(message)
       );
 }
+
+

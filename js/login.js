@@ -17,6 +17,7 @@ window.addEventListener('load',function () {
 
             console.log(user_Row[0].user_name)
             console.log(username.value)
+
             if ( username.value.length > 0 && the_pass.value.length > 0)
             {   // have local data
                 if(user_Row.length > 0)
@@ -32,7 +33,7 @@ window.addEventListener('load',function () {
                     {   // if already logined redirect to take attendance 
                         let employee = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
                         let employee_Row = await employee.json();
-                        //console.log(emp_records[0].day)
+                        
                         if(employee_Row.length > 0)
                         {
                             if(employee_Row[employee_Row.length-1].day == new Date().toISOString().slice(0, 10) )
@@ -107,7 +108,7 @@ function show_div() {
  // to show data
  function check_data(displayed) {
 
-    let node = document.createElement("H5");
+    let node = document.createElement("H4");
     let node2 = document.createElement("span")
     let textnode = document.createTextNode(displayed);
     node.appendChild(textnode);

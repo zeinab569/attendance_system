@@ -12,6 +12,7 @@ body{
     background-size: cover;
     height: 90vh;
 }
+
 #name_of_emp,#name2_of_emp{
     font-weight: bold;
     color: blue;

@@ -62,7 +62,7 @@ window.addEventListener('load', function() {
 });
 
 function show_div() {
-    var element = document.getElementById("myDIV");
+    var element = document.getElementById("div_show_data");
     element.classList.add("mystyle");
 }
 
@@ -81,9 +81,9 @@ function diplay_data(fullname,username,time) {
     node2.appendChild(textnode2);
     node3.appendChild(textnode3);
     
-    document.getElementById("myDIV").appendChild(node1);
-    document.getElementById("myDIV").appendChild(node2);
-    document.getElementById("myDIV").appendChild(node3);
+    document.getElementById("div_show_data").appendChild(node1);
+    document.getElementById("div_show_data").appendChild(node2);
+    document.getElementById("div_show_data").appendChild(node3);
     
 }    
    

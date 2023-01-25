@@ -6,6 +6,6 @@ json-server --watch db.json
 npm install unique-username-generator --save
 941fc71a-64b7-48af-999a-264569cf04ec
 f2823ef3-9456-45e1-bb42-ac64f14860d5
-git push -u origin main
+
 
 

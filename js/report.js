@@ -21,9 +21,10 @@ window.addEventListener('load', function () {
     });
    
     // with calender range in monthly
-    document.getElementById('monthrange').addEventListener('onclose', async function(e) {
-
-        let users = await fetch(`http://localhost:3000/theusers?user_name=${user_Name.value}`)
+    document.getElementById('from').addEventListener('onclose', async function(e) {
+        document.getElementById('to').addEventListener('onclose', async function(e2){
+           
+            let users = await fetch(`http://localhost:3000/theusers?user_name=${user_Name.value}`)
             let user_Row = await users.json();
 
             let employees = await fetch(`http://localhost:3000/employee?user_name=${user_Name.value}`)
@@ -31,28 +32,34 @@ window.addEventListener('load', function () {
 
             name2_of_employee.innerHTML = `${user_Row[0].fname} ${user_Row[0].lname}`;
 
-            attindance_days = [];  
-            for (let i = 0; i < employee_Row.length; i++) 
-            {
-                attindance_days.push(employee_Row[i].day)
-            }
-            let Attendance_Times = attindance_days.length;
-            let Absence_Times = 26-attindance_days.length; // only friday off
-            
-            
-            let Late_Times = 0
-            for (let i = 0; i < employee_Row.length; i++) 
-            {
-                if( employee_Row[i].login_time >=  "08:30 AM" )
-                {
-                    Late_Times = Late_Times +1;
-                }
-            } 
-            // absence rate
-            let Absence_Rate_in_month=((Absence_Times / 26)*100).toFixed(2);
-            table_data2(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,Attendance_Times,Late_Times,Absence_Times,Absence_Rate_in_month)
-            monthly_button.disabled = true
+            let from_time = e.target.value.slice(0,10);
+            let to_time = e2.target.value.slice(0,10);
 
+            //alert(from_time);
+            //alert(to_time);
+           // alert(employee_Row[i].day)
+            for (let i = 0; i < employee_Row.length; i++) {
+
+                if( from_time <= employee_Row[i].day &&employee_Row[i].day <=to_time){
+                    attindance_days = [];  
+                    attindance_days.push(employee_Row[i].day)
+                    let Attendance_Times = attindance_days.length;
+                    let Absence_Times = 26-attindance_days.length; // only friday off
+                    let Late_Times = 0
+
+                    if(   "08:30 AM" <= employee_Row[i].login_time)
+                         {
+                             Late_Times = Late_Times +1;
+                         }
+                      
+                      // absence rate
+                    let Absence_Rate_in_month=((Absence_Times / 26)*100).toFixed(2);
+
+                    table_data2(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,Attendance_Times,Late_Times,Absence_Times,Absence_Rate_in_month);
+                }
+            }
+                  monthly_button.disabled = true;
+        })  
     });
 
  // without calender daily use button
@@ -116,8 +123,6 @@ window.addEventListener('load', function () {
         });
     }
 });
-
-
 
 function table_data1(ID, fname, lname, AttendanceTime ,age,addree,log_outT,day) {
     let table = document.getElementById("Dailytable");
