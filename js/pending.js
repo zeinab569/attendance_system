@@ -1,10 +1,21 @@
 window.addEventListener('load',async function () {
     
     newdata();
-
 })
   // functiom=n to display table and get data from json
 async function newdata(){
+  let Hrow=document.createElement('tr');
+  $(Hrow).append('<th>'+"firstName"+'</th>')
+  $(Hrow).append('<th>'+"lastName"+'</th>')
+  $(Hrow).append('<th>'+"Email"+'</th>')
+  $(Hrow).append('<th>'+"Address"+'</th>')
+  $(Hrow).append('<th>'+"Age"+'</th>')
+  $(Hrow).append('<th>'+"UserName"+'</th>')
+  $(Hrow).append('<th>'+"Password"+'</th>')
+  $(Hrow).append('<th>'+"Confirm"+'</th>')
+  $(Hrow).append('<th>'+"Ignore"+'</th>')
+  $('#thead').append(Hrow);
+
     let returnData=await fetch('http://localhost:3000/pending');
     let normal= await returnData.json();
     console.log(normal);
@@ -33,13 +44,13 @@ async function newdata(){
      
      $('#tbody').append(newrow);
    }
-    // $('#example')
-    // .DataTable();
+    $('#example')
+    .DataTable();
    }
    // to remove requset
 async function ignoreRequest(e){
   let name=e.target.parentElement.parentElement.children[0].innerHTML;
-  console.log(name);
+  //console.log(name);
   let userData= await fetch(`http://localhost:3000/pending?fname=${name}`);
   let userDataObject= await userData.json();
   fetch(`http://localhost:3000/pending/${userDataObject[0].id}`, {method: 'DELETE',})
@@ -51,13 +62,12 @@ async function sendToEmp(e){
     let name=e.target.parentElement.parentElement.children[0].innerHTML;
     let userData= await fetch(`http://localhost:3000/pending?fname=${name}`);
     let userDataObject= await userData.json();
-  
-   emailjs.send("service_hglnp7m","template_m6twmph",{
-      from_name: "Admin",
-      firstName: userDataObject[0].fname,
-      userName:   generate_Random_Name(),
-      password:   generate_Random_Password(),
-      to: userDataObject[0].email,
+    
+   emailjs.send("service_6t1coiz","template_2onh0ny",{
+      from_name: "Zeinab",
+      usereName: userDataObject[0].user_name,
+      pass:  userDataObject[0].password,
+      the_mail: userDataObject[0].e_mail,
       }).then(()=>{
            fetch(`http://localhost:3000/pending/${userDataObject[0].id}`,{method:'DELETE'})
            fetch(`http://localhost:3000/theusers`,{

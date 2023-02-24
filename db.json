@@ -1,24 +1,15 @@
 {
   "pending": [
     {
-      "fname": "zeinab",
+      "fname": "aya",
       "lname": "elazab",
       "age": "22",
       "e_mail": "zeinabelazzab875@gmail.com",
-      "address": "dikernis",
+      "address": "Alex",
+      "user_name": "54nikZG",
+      "password": "CiVNk",
       "id": 1
-    },
-    {
-      "fname": "sara",
-      "lname": "mohamed",
-      "age": "24",
-      "e_mail": "sara@gmail.com",
-      "address": "cairo",
-      "user_name": "b3hx3Im",
-      "password": "SIv)h",
-      "id": 2
     }
-    
   ],
   "theusers": [
     {
@@ -173,14 +164,6 @@
       "day": "2023-02-22",
       "id": 6,
       "logout_time": "06:13 PM"
-    },
-    {
-      "full_name": "aya emad",
-      "user_name": "1S70ddp",
-      "login_time": "06:26 PM",
-      "day": "2023-02-22",
-      "id": 7,
-      "logout_time": "06:27 PM"
     }
   ]
 }

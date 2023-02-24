@@ -3,32 +3,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation Page</title>
+    <title>pending Page</title>
     <link href="../css/bootstrap.min.css"/>
     <link href="../css/pending.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/regular.min.css">
 </head>
 <body>
-  <div>
-      <table id="example" class="table table-striped table-bordered"">
-          <thead>
-              <tr>
-                  <th>FirstName</th>
-                  <th>LastName</th>
-                  <th>Email</th> 
-                  <th>Address</th>
-                  <th>Age</th>
-                  <th>UserName</th>
-                  <th>Password</th>
-                  <th>Reject</th>
-                  <th>Accept</th>
-              </tr>
-          </thead>
-      <tbody id="tbody">
+  
 
-      </tbody>
-      </table>
-  </div>
+  <div class="mx-3" id="tableDiv">
+    <table id="example" class=" table table-secondary table-hover" >
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+    </table>
+</div>
+    <script src="../js/email.min.js"> </script>
+    <script>(function(){emailjs.init("_lkMhbkcE2ndSMV1H");})();</script>
     <script src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/pending.js"></script>
 </body>

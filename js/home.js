@@ -166,6 +166,8 @@ if(the_register){
         userage = document.getElementById('the_age');
         useradd = document.getElementById('the_address');
         useremail = document.getElementById('the_Email');
+
+      let theem= useremail.value
     
         // get random data for password and user name 
         //const username = generateFromEmail(
@@ -194,7 +196,7 @@ if(the_register){
             return pass;}
            the_password = generate_Random_Password();
     
-        let the_date = {
+        let the_data = {
             "fname": userfirstname.value,
             "lname": userlastname.value,
             "age": userage.value,
@@ -205,20 +207,51 @@ if(the_register){
         }
         
         
-        await fetch('http://localhost:3000/pending', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(the_date),
-        })
-
-        Sendmail();
-        //setTimeout("location.href = '../htmls/login.html';",4000);   
-        setTimeout(function(){location.href='../htmls/login.html'} , 2000);
-        
+        getAllEmail(theem).then((data)=>{
+            if(data.length>0){
+             alert("email is here");
+            }
+            else{
+                 fetch('http://localhost:3000/pending', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(the_data),
+                    })
+            }
+        }
+       // setTimeout(function(){location.href='../htmls/login.html'} , 2000);
+        )  
     })
 }
+
+  function getAllEmail(_email)
+{
+    return fetch(`http://localhost:3000/pending?e_mail=${_email}`)
+    .then(response => response.json())
+    .then(data=> { 
+        return data;
+     })
+    .catch(function(err) {
+        console.log(`Error: ${err}`)
+    });
+}
+
+
+  function checkDuplicateEmail(_email){
+    getAllEmail(_email).then(employee=>{
+        if(employee.length >0) 
+            return true
+        else 
+            return false
+    });}
+
+
+
+
+
+
 
 function Sendmail(){
     Email.send({

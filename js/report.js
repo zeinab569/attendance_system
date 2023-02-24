@@ -17,9 +17,13 @@ window.addEventListener('load', function () {
                 if( e.target.value.slice(0,10) == employee_Row[i].day ){
                    table_data1(user_Row[0].id,user_Row[0].fname,user_Row[0].lname,employee_Row[i].login_time,user_Row[0].age,user_Row[0].address,employee_Row[i].logout_time,employee_Row[i].day);
                 } 
-            }  
+            } 
+            
+            
     });
+
    
+
     // with calender range in monthly
     document.getElementById('from').addEventListener('onclose', async function(e) {
         document.getElementById('to').addEventListener('onclose', async function(e2){

@@ -6,30 +6,30 @@ window.addEventListener('load', function() {
     if(confirm){
         confirm.addEventListener('click', async function (e) {
             e.preventDefault();
+            let users = await fetch(`http://localhost:3000/theusers?user_name=${username.value}`)
+            let user_Row = await users.json();
             
-            let employee = await fetch(`http://localhost:3000/employee?user_name=${username.value}`)
-            let employee_Row = await employee.json();
-            
-            
-            for (let i = 0; i < employee_Row.length; i++)
+            for (let i = 0; i < user_Row.length; i++)
             {
-                if(employee_Row[i].user_name == username.value){
-                    if(employee_Row[i].day == new Date().toISOString().slice(0, 10))
-                    {
+                    if(user_Row[i].day == new Date().toISOString().slice(0, 10))
+                    {   
                         show_div();
-                        fulname = `Name : ${employee_Row[i].full_name}`
-                        localStorage.setItem("FullName", employee_Row[i].full_name);
-                        usrname = `User Name : ${employee_Row[i].user_name}`
-                        localStorage.setItem("UserName", employee_Row[i].user_name);
-                        Time = `Time : ${employee_Row[i].login_time}`
-                        localStorage.setItem("Time", employee_Row[i].login_time);
+                        let the_data = {
+                            "fullName": user_Row[0].fname+' '+user_Row[0].lname, 
+                            "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
+                            "day": new Date().toISOString().slice(0, 10)  //"2023-01-10T02:00:00Z"
+                        }    
+                        await fetch('http://localhost:3000/employee', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(the_data),
+                            })
+                            
                         diplay_data(fulname,usrname,Time)
                         setTimeout("location.href = '../htmls/report.html';",4000);   
-                    }
-                }
-                else{
-                    alert("user Name not found plese enter another user name ")
-                }
+                    }    
             }
               
         })
