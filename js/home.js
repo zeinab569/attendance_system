@@ -155,9 +155,6 @@ if(login){
     login.addEventListener('click',goto_login())
 }
 
-    
-
-
 // when click register we send data to server and create password and user name randum
 the_register = document.getElementById("regester_btn")
 if(the_register){
@@ -207,7 +204,8 @@ if(the_register){
             "password":the_password,
         }
         
-        await fetch('http://localhost:3000/theusers', {
+        
+        await fetch('http://localhost:3000/pending', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -216,17 +214,17 @@ if(the_register){
         })
 
         Sendmail();
-        setTimeout("location.href = '../htmls/login.html';",1000); 
+        //setTimeout("location.href = '../htmls/login.html';",4000);   
+        setTimeout(function(){location.href='../htmls/login.html'} , 2000);
+        
     })
 }
 
-
-
 function Sendmail(){
     Email.send({
-        SecureToken : "f2823ef3-9456-45e1-bb42-ac64f14860d5",
-        To : useremail.value,
-        From : "zeinabelazzab875@gmail.com",
+        SecureToken : "4ad3b8bf-309d-446f-adaf-af6ea8a88b3a",
+        To :useremail.value ,
+        From : "zeinabelazab123@gmail.com",
         Subject : "This is the subject",
         Body : `
         <h4>Employee Data</h4>s

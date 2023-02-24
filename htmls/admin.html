@@ -6,6 +6,100 @@
   <link rel="stylesheet" href="../css/dashboard.css" />
   <script src="../node_modules/chart.js/dist/chart.umd.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script>
+    window.addEventListener('load', async function () {
+      let xValues = [];
+      let yValues = [];
+      let yValues2 = [];
+    let users = await fetch(`http://localhost:3000/theusers`)
+    let user_Row = await users.json();
+    
+    for (let i = 0; i < user_Row.length; i++) 
+    {
+        
+        let employee = await fetch(`http://localhost:3000/employee?user_name=${user_Row[i].user_name}`)
+        let employee_Row = await employee.json();
+        
+        attindance_days = [];
+        for (let j = 0; j < employee_Row.length; j++) 
+        {
+            attindance_days.push(employee_Row[j].day)
+        }
+
+        let Attendance_Times = attindance_days.length;
+        let Absence_Times = 26 -attindance_days.length;  // only friday off
+        
+        
+        let Late_Times = 0
+        for (let x = 0; x < employee_Row.length; x++) 
+        {   
+            if( "08:30 AM" <= employee_Row[x].login_time)
+            {
+                Late_Times = Late_Times +1;    
+            }
+        } 
+
+        let Absence_Rate_in_month=((Absence_Times / 26)*100).toFixed(2);
+
+        full_name = user_Row[i].fname+' '+user_Row[i].lname 
+          xValues.push(full_name)
+          yValues.push(Absence_Rate_in_month)
+          yValues2.push(Late_Times)
+       
+        var barColors = [
+           "#b91d47",
+            "#00aba9",
+           "#2b5797",
+            "#e8c3b9",
+            "#1e7145"
+     ];
+
+        
+    }
+    new Chart("myChart", {
+            type: "pie",
+            data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+            data: yValues
+    }]
+  },
+    options: {
+    title: {
+      display: true,
+      text: "The Absence_Rate_in_month"
+    }
+  }
+ });
+
+ new Chart("myChart2", {
+            type: "line",
+            data: {
+            labels: xValues,
+            datasets: [{
+              fill: false,
+               lineTension: 0,
+               backgroundColor: "rgba(0,0,255,1.0)",
+               borderColor: "rgba(0,0,255,0.1)",
+            data: yValues2
+    }]
+  },
+    options: {
+    title: {
+      legend: {display: false},
+      scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+    }
+  }
+ });
+
+
+})
+
+  </script>
   
 </head>
 <body>
@@ -18,11 +112,11 @@
         </a></li>
         <li><a href="#">
           <i class="fas fa-menorah"></i>
-          <span class="nav-item">Dashboard</span>
+          <span class="nav-item">Charts</span>
         </a></li>
-        <li><a href="#">
+        <li><a href="../htmls/pending.html">
           <i class="fas fa-comment"></i>
-          <span class="nav-item">Message</span>
+          <span class="nav-item">Pending</span>
         </a></li>
         <li><a href="../htmls/admin_attendance.html">
           <i class="fas fa-database"></i>
@@ -43,9 +137,13 @@
         </a></li>
       </ul>
     </nav>
-
+    <div class="main">
+      <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+      <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
+    </div>
     
   </div>
-  
+ <script src="../js/jquery-3.1.1.min.js"></script>
+ <script src="../js/bootstrap.min.js"></script> 
 </body>
 </html>

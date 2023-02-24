@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+body{
+    padding-top:99px;
+    background-image: url(../images/bgforconfirm.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}

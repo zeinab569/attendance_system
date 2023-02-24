@@ -1,4 +1,25 @@
 {
+  "pending": [
+    {
+      "fname": "zeinab",
+      "lname": "elazab",
+      "age": "22",
+      "e_mail": "zeinabelazzab875@gmail.com",
+      "address": "dikernis",
+      "id": 1
+    },
+    {
+      "fname": "sara",
+      "lname": "mohamed",
+      "age": "24",
+      "e_mail": "sara@gmail.com",
+      "address": "cairo",
+      "user_name": "b3hx3Im",
+      "password": "SIv)h",
+      "id": 2
+    }
+    
+  ],
   "theusers": [
     {
       "fname": "zeinab",
@@ -39,6 +60,46 @@
       "user_name": "92b6yMc",
       "password": "QX9dy",
       "id": 4
+    },
+    {
+      "fname": "yara",
+      "lname": "ahmed",
+      "age": "22",
+      "e_mail": "yara123@gmail.com",
+      "address": "cairo",
+      "user_name": "cbDBwGv",
+      "password": "GDQCD",
+      "id": 5
+    },
+    {
+      "fname": "aya",
+      "lname": "emad",
+      "age": "22",
+      "e_mail": "aya123@gmail.com",
+      "address": "cairo",
+      "user_name": "1S70ddp",
+      "password": "i6nLX",
+      "id": 6
+    },
+    {
+      "fname": "faten",
+      "lname": "mohamed",
+      "age": "22",
+      "e_mail": "zeinabelazab123@gmail.com",
+      "address": "alex",
+      "user_name": "hSR3RBg",
+      "password": "GV3%J",
+      "id": 7
+    },
+    {
+      "fname": "asmaa",
+      "lname": "mohamed",
+      "age": "22",
+      "e_mail": "asmaa13@gmail.com",
+      "address": "mansoura",
+      "user_name": "oh6oGXD",
+      "password": "nFO%h",
+      "id": 8
     }
   ],
   "employee": [
@@ -72,7 +133,7 @@
       "login_time": "11:50 AM",
       "day": "2023-01-25",
       "id": 4,
-      "logout_time": "11:60 AM"
+      "logout_time": "12:46 PM"
     },
     {
       "full_name": "ibrahim elazab",
@@ -97,6 +158,29 @@
       "day": "2023-01-24",
       "id": 1,
       "logout_time": "3:17 AM"
+    },
+    {
+      "full_name": "zeinab e",
+      "user_name": "wSd7hnx",
+      "login_time": "12:45 PM",
+      "day": "2023-01-26",
+      "id": 5
+    },
+    {
+      "full_name": "yara ahmed",
+      "user_name": "cbDBwGv",
+      "login_time": "06:11 PM",
+      "day": "2023-02-22",
+      "id": 6,
+      "logout_time": "06:13 PM"
+    },
+    {
+      "full_name": "aya emad",
+      "user_name": "1S70ddp",
+      "login_time": "06:26 PM",
+      "day": "2023-02-22",
+      "id": 7,
+      "logout_time": "06:27 PM"
     }
   ]
 }

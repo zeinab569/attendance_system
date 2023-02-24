@@ -10,7 +10,7 @@
   font-family: "Poppins", sans-serif;
 }
 body{
-  background: rgb(226, 226, 226);
+  background: rgb(247, 245, 245);
 }
 nav{
   position: sticky;
@@ -88,4 +88,15 @@ a:hover i{
   position: relative;
   padding: 20px;
   width: 100%;
+}
+#myChart2{
+  margin-top: 50px;
+  display: flex;
+  position: relative;
+  text-align: center;
+  margin-left: 28rem;
+}
+#myChart{
+  text-align: center;
+  margin-left: 28rem;
 }

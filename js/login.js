@@ -15,9 +15,6 @@ window.addEventListener('load',function () {
             let user = await fetch(`http://localhost:3000/theusers?user_name=${username.value}`)
             let user_Row = await user.json();
 
-            console.log(user_Row[0].user_name)
-            console.log(username.value)
-
             if ( username.value.length > 0 && the_pass.value.length > 0)
             {   // have local data
                 if(user_Row.length > 0)
@@ -39,14 +36,14 @@ window.addEventListener('load',function () {
                             if(employee_Row[employee_Row.length-1].day == new Date().toISOString().slice(0, 10) )
                             {
                                 //redirect to this page 
-                                setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);   
+                                setTimeout(function(){location.href='./home.html'} , 2000);   
                                
                             }
                          // else login first then confirm attendance
                             else
                             {
                                 let the_data = {
-                                    "fullName": user_Row[0].fullname, 
+                                    "fullName": user_Row[0].fname+' '+user_Row[0].lname, 
                                     "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                                     "day": new Date().toISOString().slice(0, 10) }  //"2023-01-10T02:00:00Z"   
                                 
@@ -57,7 +54,7 @@ window.addEventListener('load',function () {
                                     },
                                     body: JSON.stringify(the_data),
                                     })
-                                    setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);
+                                    setTimeout(function(){location.href='./home.html'} , 2000);
                                
                             }
                         } 
@@ -77,7 +74,6 @@ window.addEventListener('load',function () {
                                 },
                                 body: JSON.stringify(the_data),
                                 })
-                            setTimeout(function(){location.href='../htmls/confirm_attendance.html'} , 2000);
                            
                         }  
                     }  
@@ -97,6 +93,8 @@ window.addEventListener('load',function () {
                 setTimeout("location.reload()",3000)
             }                                
         }) 
+   
+       
     }   
 })
 
