@@ -11,9 +11,7 @@ window.addEventListener('load', function() {
             
             for (let i = 0; i < user_Row.length; i++)
             {
-                    if(user_Row[i].day == new Date().toISOString().slice(0, 10))
-                    {   
-                        show_div();
+                        
                         let the_data = {
                             "fullName": user_Row[0].fname+' '+user_Row[0].lname, 
                             "login_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
@@ -29,7 +27,7 @@ window.addEventListener('load', function() {
                             
                         diplay_data(fulname,usrname,Time)
                         setTimeout("location.href = '../htmls/report.html';",4000);   
-                    }    
+                  
             }
               
         })
@@ -43,8 +41,8 @@ window.addEventListener('load', function() {
             let employee_Row = await employee.json();
             for (let i = 0; i < employee_Row.length; i++)
             {
-                if(employee_Row[i].day == new Date().toISOString().slice(0, 10))
-                {
+                //if(employee_Row[i].day == new Date().toISOString().slice(0, 10))
+               // {
                     let the_data = {
                         "logout_time" :  new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
                           }   
@@ -55,7 +53,7 @@ window.addEventListener('load', function() {
                         },
                         body: JSON.stringify(the_data)
                         })
-                }
+               // }
             }  
         })
     }

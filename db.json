@@ -1,16 +1,5 @@
 {
-  "pending": [
-    {
-      "fname": "aya",
-      "lname": "elazab",
-      "age": "22",
-      "e_mail": "zeinabelazzab875@gmail.com",
-      "address": "Alex",
-      "user_name": "54nikZG",
-      "password": "CiVNk",
-      "id": 1
-    }
-  ],
+  "pending": [],
   "theusers": [
     {
       "fname": "zeinab",
@@ -116,7 +105,7 @@
       "login_time": "10:53 AM",
       "day": "2023-01-24",
       "id": 3,
-      "logout_time": "11:17 AM"
+      "logout_time": "02:56 PM"
     },
     {
       "full_name": "ibrahim elazab",
@@ -164,6 +153,24 @@
       "day": "2023-02-22",
       "id": 6,
       "logout_time": "06:13 PM"
+    },
+    {
+      "fullName": "zeinab elazab",
+      "login_time": "02:53 PM",
+      "day": "2023-02-24",
+      "id": 7
+    },
+    {
+      "fullName": "zeinab elazab",
+      "login_time": "03:06 PM",
+      "day": "2023-02-24",
+      "id": 8
+    },
+    {
+      "fullName": "asmaa mohamed",
+      "login_time": "03:10 PM",
+      "day": "2023-02-24",
+      "id": 9
     }
   ]
 }
